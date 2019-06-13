@@ -1,0 +1,2 @@
+#Here only two command which is enough to import both csv and json file in our system
+
