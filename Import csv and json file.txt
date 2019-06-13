@@ -1,2 +1,15 @@
 #Here only two command which is enough to import both csv and json file in our system
 
+open cmd
+---------------------------------
+#Import csv file:
+---------------------------------
+>mongoimport --db MongoDB --collection Contrib_data --type csv --file Contrib_data.csv --headerline
+
+
+-----------------------
+import json file
+-----------------------
+>cd c:\MongoDB\bin                                                              #(path where mongodb installed in c drive)
+>mongoimport --db city --collection inspections --file city_inspections.json    #where city is database name and inspections is collection
+
