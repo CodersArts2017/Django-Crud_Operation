@@ -1,0 +1,14 @@
+#to start mongoDB Follow these steps
+
+first install it.
+ 
+ then run command to check default databases
+ >show dbs
+ then
+ >use databasename
+ 
+ then run:
+ 
+ >db.collectionname.find()
+ 
+ and then follow stapes to quering data
