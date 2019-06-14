@@ -1,0 +1,35 @@
+
+--------------------------------------------------------------------------------------------------
+MongoDB - Limit the Results of a Query
+--------------------------------------------------------------------------------------------------
+Return only the number of documents you need with the limit() method
+In MongoDB, you can use the limit() method to specify a maximum number of documents for a cursor to return.
+
+When you query a collection using the db.inspections.find() method, you can append limit() to specify the limit.
+
+Example
+First let's do a query without a limit (so we can see how many documents are returned):
+
+Without a Limit
+
+>db.inspections.find( { "result": "Violation Issued" }, { "date": 1 } )
+
+Result:
+
+With a Limit
+OK, so let's limit the results to say, 3 documents:
+
+>db.inspections.find( { "result": "Violation Issued" }, { "date": 1 } ).limit(3)
+
+Result:
+
+Add the skip() Method
+
+You can use the skip() method to skip to a document within the cursor
+
+>db.inspections.find( { "result": "Violation Issued" }, { "date": 1 } ).limit(3).skip(1)
+
+Result: Skip first result and display next three result
+
+Note that skip() can be used on any query (not just ones with limit()).
+
