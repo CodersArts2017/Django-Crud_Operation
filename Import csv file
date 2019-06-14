@@ -1,0 +1,4 @@
+
+Import csv file:
+
+>mongoimport --db MongoDB --collection Contrib_data --type csv --file Contrib_data.csv --headerline
