@@ -1,0 +1,27 @@
+
+--------------------------------------------------------------------------------------------------------
+MongoDB - Sort the Results of a Query
+--------------------------------------------------------------------------------------------------------
+The sort() method specifies a sort order for the cursor.
+It will typically contain one or more fields, each followed by either 1 or -1, depending on whether the sort should be in ascending or descending order.
+
+With sort() in Ascending Order
+A value of 1 next to a field name specifies that the documents should be sorted by the specified field in ascending order.
+
+Here we sort the results by name in ascending order:
+>db.inspections.find( ).sort( { "date": 1 } )
+
+With sort() in Descending Order
+A value of -1 next to a field name specifies descending order.
+
+Here we sort the results by name in descending order:
+
+>db.inspections.find( ).sort( { "date": -1 } )
+
+Multiple Fields
+
+>db.inspections.find( ).sort( { "result": 1, "date": -1 } )
+
+Sort with Limit
+
+>db.inspections.find( ).limit(3).sort( { "result": 1} )
