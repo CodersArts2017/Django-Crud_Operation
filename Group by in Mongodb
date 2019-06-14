@@ -1,0 +1,75 @@
+
+> show dbs
+MongoDB   0.005GB
+admin     0.000GB
+city      0.012GB
+config    0.000GB
+employee  0.000GB
+local     0.000GB
+> use employee
+switched to db employee
+> db.employee.find().pretty()
+{
+        "_id" : ObjectId("5cfa0ea5d547422e9da13839"),
+        "no" : "1",
+        "name" : "naveen",
+        "salary" : 10000,
+        "role" : "OB"
+}
+{
+        "_id" : ObjectId("5cfa0ec5d547422e9da1383a"),
+        "no" : "1",
+        "name" : "jitendra",
+        "salary" : 6500,
+        "role" : "db"
+}
+{
+        "_id" : ObjectId("5cfa16ffce2c8ca71875c757"),
+        "no" : "2",
+        "name" : "ak",
+        "role" : "eng",
+        "salary" : 5000
+}
+{
+        "_id" : ObjectId("5cfa177dce2c8ca71875c75e"),
+        "no" : "3",
+        "name" : "bk",
+        "role" : "data",
+        "salary" : 12000
+}
+>
+
+------------------------------------------------------------Group By-------------------------------------------------------------
+QUESTION:
+Example groups by the salary and no fields those documents that have SALARY greater than 6000.
+>db.employee.group(
+   {
+     key: { "salary": 1, "no": 1 },
+     cond: { "salary": { $gt: 6000 } },
+     reduce: function ( curr, result ) { },
+     initial: { }
+   }
+);
+
+
+-------------------------------------------------------------Group by two field----------------------------------------------------------------------
+Question:
+
+
+Example groups by the "salay" and "no" fields, those documents that have "no" field is equal to the "1" and calculates the sum of the salary field for each grouping:
+
+>db.employee.group(
+   {
+     key: { "salary": 1, "no": 1 },
+     cond: { "no": "1" },
+     reduce: function ( curr, result ) {
+                 result.total += curr.salary;
+             },
+     initial: { total : 0 }
+   }
+);
+
+
+
+
+
