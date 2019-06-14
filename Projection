@@ -1,0 +1,38 @@
+
+Projection:
+
+A projection query is a query where you specify which fields should be returned.
+
+You can do this by including the field names in your query, and adding a 1 or 0 next to them, 
+to specify whether it should be returned or not. This is a projection parameter. 
+A projection parameter of 1 will display the field and a 0 will hide it.
+
+Example
+First let's do a query without projection (so we can see how many fields are returned):
+
+Without Projection:
+
+>db.inspections.find( {"result": "Violation Issued"} )
+
+Result:
+
+With Projection
+Now, let's use projection to display just the name field:
+
+>db.inspections.find( { "result": "Violation Issued" }, { "_id":0,"date": 1 ,"result":1} )
+
+Result:
+
+
+You will notice that the _id field is automatically included, even if you don't specify it. You can exclude this field by using a 0 against it:
+
+>db.inspections.find( { "result": "Violation Issued" }, { _id: 0, "date": 1 } )
+
+Result:
+
+You can't mix 1s(inclusion) and 0s(Exclusion)
+
+>db.inspections.find( { "result": "Violation Issued" }, { "date": 1, "sector":0 } )
+
+You'll end up with this error:
+Error Result:
