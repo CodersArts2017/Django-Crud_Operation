@@ -1,0 +1,39 @@
+db.inspections.remove( {"id" : "10021-2015-ENFP",
+"certificate_number" : 9278809,
+"business_name" : "Codersarts",
+"date" : "Feb 20 2019",
+"result" : "No Violation Issued",
+"sector" : "Cigarette Retail Dealer - 127", 
+} );
+
+Output look like:
+
+WriteResult({ "nRemoved" : 1 })
+
+
+
+-----------------------------------
+#remove by given condition
+---------------------------------------
+
+> db.inspections.find({})
+
+>criteria = {"result" : "pass"}
+
+output: { "result" :"No Violation Issued"}
+
+>db.inspections.find(criteria)
+
+>db.inspections.remove(criteria)
+------------------------------------------------------------------
+if you want to delete only one document of given crieteria then use
+-------------------------------------------------------------------
+> criteria={"result":"No Violation Issued"}
+{ "result" : "No Violation Issued"}
+> db.inspections.find(criteria).count()
+3795
+
+> db.inspections.remove(criteria,1)
+output:
+
+WriteResult({ "nRemoved" : 1 })
