@@ -1,0 +1,57 @@
+
+=================================================fIND RECORD WITH MATCHING WORD===================================================
+
+QUESTION:
+ fIND DOCUMENT FROM COLLECTION "INSPECTIONS" IN WHICH "DATE" BEGINS WITH "M".
+
+>db.inspections.find({"date":"/^M/"})
+
+-----------------------------------------------------
+
+QUESTION:
+ FIND ALL DOCUMENTS FORM COLLECTION "INSPECTIONS" IN WHICH last digit of city end with "E" in address colunm.
+
+>db.inspections.find({"address.city":"/$E/"})
+
+-----------------------------------------------------
+
+QUESTION: FIND DOCUMENTS IN WHICH CITY HAVE "V" LETTER AT ANY POSSITION IN CITY IN ADDRESS
+
+>db.inspections.find({"address.city":"/V/"})
+
+------------------------------------------------------
+
+QUESTION: INSERT DATA IN COLLECTIONS "EMPLOYEE" AND DISPLAY IN PROPER FORMATE USING PRETTY()
+
+>db.employee.find().pretty()
+
+--------------------------------------------------
+
+QUESTION: INCREMENT SALARY OF EMPLOYEE "NAVEEN" OF COLLECTION "EMPLOYEE" BY 4000.
+
+>db.employee.update({"name":"naveen"},{$inc:{"salary":4000}})
+
+where $inc function use for increment salary
+
+-----------------------------------------------------
+QUESTION: INCREMENT ALL EMPLOYEE SALARY BY 4000
+
+>db.employee.update({},{$inc:{"salary":4000}},{multi:true}})
+
+----------------------------------------------------
+
+QUESTION: ADD NEW RECORD WITHOUT USING INSERT OPERATOR
+
+>db.employee.update({"no":"3"},{$set:{"no":"3","name":"bk","salary":6000,"role":"data"}},{upsert:true})
+
+------------------------------------------------
+
+QUESTION: Remove docuement using "unset"
+
+db.employee.update({"name":"bk"},{$unset:{remark:"ek"}})
+
+---------------------------------------------------
+
+QUESTION: MULTIPLY BY SALARY 2
+>db.employee.update({"name":"naveen"},{$mul:{"salary":2}})
+--------------------------------------------------
