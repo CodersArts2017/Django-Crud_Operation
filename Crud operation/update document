@@ -1,0 +1,8 @@
+#Update document
+
+> db.inspections.find({})
+
+>db.inspections.updateMany(
+{ "result":"Pass"},
+   { $set: { "result": "Violation Issued" } }
+)
